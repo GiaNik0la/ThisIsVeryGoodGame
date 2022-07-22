@@ -10,7 +10,7 @@ struct Player {
     bool isAlive;
 };
 
-void move(Player player) {
+void move(Player &player) {
     char input = getch();
 
     switch(input) {
@@ -29,7 +29,10 @@ void move(Player player) {
         case 'D':
         case 'd':
             player.x += player.speed;
-        break;
+            break;
+        case 'Q':
+        case 'q':
+            player.isAlive = false;
     }
 
 }
@@ -54,10 +57,10 @@ int main() {
         cout << player.x << " " << player.y << endl;
         for (int y = 0; y < 25; y++) {
             for (int x = 0; x < 50; x++) {
-                board[y][x] = ".";
+                board[y][x] = '.';
             }
         }
-        board[player.y][player.x] = "#";
+        board[player.y][player.x] = '#';
 
         for (int y = 0; y < 25; y++) {
             for (int x = 0; x < 50; x++) {
